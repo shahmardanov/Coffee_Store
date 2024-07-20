@@ -5,6 +5,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -74,6 +75,9 @@ dependencies {
 
     implementation ("com.airbnb.android:lottie:6.4.0")
 
+    implementation ("io.github.shashank02051997:FancyToast:2.0.2")
+
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
