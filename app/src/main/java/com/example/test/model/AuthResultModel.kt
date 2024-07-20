@@ -1,3 +1,4 @@
+package com.example.test.model
 
 
 import android.os.Parcelable
