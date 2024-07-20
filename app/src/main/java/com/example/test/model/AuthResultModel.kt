@@ -8,4 +8,5 @@ import kotlinx.android.parcel.Parcelize
 data class AuthResultModel(
     val message: String? = null,
     val isSuccess: Boolean,
+    val userName: String,
 ): Parcelable
