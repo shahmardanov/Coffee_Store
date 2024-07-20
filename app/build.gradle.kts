@@ -47,6 +47,8 @@ android {
 
 dependencies {
 
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.firestore.ktx)
     val nav_version = "2.7.7"
     val lifecycle_version = "2.8.0"
     val room_version = "2.6.1"
