@@ -1,7 +1,5 @@
 package com.example.test.model
 
-
-
 data class Product(
     val id: Int = 0,
     val name: String = "",
