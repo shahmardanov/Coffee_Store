@@ -24,9 +24,23 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        context?.let { FancyToast.makeText(it, "Welcome to Login", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show() }
+        context?.let {
+            FancyToast.makeText(
+                it,
+                "Welcome to Login",
+                FancyToast.LENGTH_SHORT,
+                FancyToast.SUCCESS,
+                false
+            ).show()
+        }
         super.onViewCreated(view, savedInstanceState)
         observeData()
+        binding.imageViewfaceId.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFaceIdFragment())
+        }
+        binding.ButtonLogin.setOnClickListener {
+            loginUser()
+        }
         binding.filledTonalButtoncreateNewAccount.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
@@ -45,7 +59,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 context?.let {
                     FancyToast.makeText(
                         it,
-                        "Switch is deactivated",
+                        "Not Remember me",
                         FancyToast.LENGTH_SHORT,
                         FancyToast.INFO,
                         false
@@ -104,7 +118,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             if (it) binding.animationView.visible() else binding.animationView.gone()
         }
     }
-
 
 
     private fun setUserAuth() {

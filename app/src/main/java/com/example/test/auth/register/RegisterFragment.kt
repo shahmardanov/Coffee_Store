@@ -28,7 +28,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
-        registerUser()
+        binding.ButtonRegister.setOnClickListener {
+            registerUser()
+        }
         binding.filledTonalButtonSignin.setOnClickListener {
             findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
         }
@@ -40,17 +42,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             viewModel.registerUser(email, password)
-        } else {
-            context?.let {
-                FancyToast.makeText(
-                    it,
-                    "Welcome to our App",
-                    FancyToast.LENGTH_SHORT,
-                    FancyToast.SUCCESS,
-                    false
-                ).show()
-            }
-
         }
     }
 
