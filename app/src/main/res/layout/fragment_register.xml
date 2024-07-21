@@ -103,7 +103,7 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter User Name"
+                android:hint="Enter username"
                 android:textColor="@color/black" />
 
             <ViewAnimator
@@ -173,7 +173,7 @@
 
 
         <Button
-            android:id="@+id/filledTonalButtonRegister"
+            android:id="@+id/filledTonalButtonLogin"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="310dp"
             android:layout_height="60dp"
@@ -208,7 +208,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filledTonalButtonRegister" />
+            app:layout_constraintTop_toBottomOf="@+id/filledTonalButtonLogin" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
