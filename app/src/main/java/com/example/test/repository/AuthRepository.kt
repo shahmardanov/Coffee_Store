@@ -1,5 +1,6 @@
 package com.example.test.repository
 
+import com.example.test.R
 import com.example.test.model.AuthResultModel
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,4 +15,7 @@ class AuthRepository @Inject constructor(private val firebaseAuth: FirebaseAuth)
 
     suspend fun loginUser(email: String, password: String) =
         firebaseAuth.signInWithEmailAndPassword(email, password).await()
+
+    suspend fun switchFaceId(enabled: Boolean){
+    }
 }

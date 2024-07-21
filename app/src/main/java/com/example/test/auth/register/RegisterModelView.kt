@@ -52,4 +52,22 @@ class RegisterModelView @Inject constructor(private val repository: AuthReposito
             }
         }
     }
+
+    fun switchFaceId(enable: Boolean) {
+        loading.value = true
+        viewModelScope.launch {
+            try {
+                val response = repository.switchFaceId(enable)
+                if (!response.equals("Face ID switched successfully")) {
+                    loading.value = false
+                    isSuccess.value = true
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.localizedMessage.toString()
+                loading.value = false
+                isSuccess.value = false
+            }
+
+        }
+    }
 }

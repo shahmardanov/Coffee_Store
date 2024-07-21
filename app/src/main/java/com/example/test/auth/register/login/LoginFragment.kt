@@ -26,6 +26,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         context?.let { FancyToast.makeText(it, "Welcome to Login", FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show() }
         super.onViewCreated(view, savedInstanceState)
+        observeData()
         binding.filledTonalButtoncreateNewAccount.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
