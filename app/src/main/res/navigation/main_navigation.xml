@@ -36,5 +36,14 @@
         android:id="@+id/faceIdFragment"
         android:name="com.example.test.auth.register.FaceIdFragment"
         android:label="fragment_face_id"
-        tools:layout="@layout/fragment_face_id" />
+        tools:layout="@layout/fragment_face_id" >
+        <action
+            android:id="@+id/action_faceIdFragment_to_coffeeSplashFragment"
+            app:destination="@id/coffeeSplashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coffeeSplashFragment"
+        android:name="com.example.test.splash.CoffeeSplashFragment"
+        android:label="fragment_coffee_splash"
+        tools:layout="@layout/fragment_coffee_splash" />
 </navigation>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentFaceIdBinding
@@ -20,6 +21,9 @@ class FaceIdFragment : BaseFragment<FragmentFaceIdBinding>(FragmentFaceIdBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.ButtonYes.setOnClickListener {
+            findNavController().navigate(FaceIdFragmentDirections.actionFaceIdFragmentToCoffeeSplashFragment())
+        }
         faceIdVerification()
     }
 
