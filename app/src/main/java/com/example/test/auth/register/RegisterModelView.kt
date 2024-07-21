@@ -35,4 +35,21 @@ class RegisterModelView @Inject constructor(private val repository: AuthReposito
             }
         }
     }
+
+    fun loginUser(email: String, password: String) {
+        loading.value = true
+        viewModelScope.launch {
+            try {
+                val response = repository.loginUser(email, password)
+                if (!response.user?.email.isNullOrEmpty()) {
+                    loading.value = false
+                    isSuccess.value = true
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.localizedMessage.toString()
+                loading.value = false
+                isSuccess.value = false
+            }
+        }
+    }
 }
