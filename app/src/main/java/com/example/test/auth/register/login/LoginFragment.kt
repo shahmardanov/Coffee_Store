@@ -29,6 +29,29 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         binding.filledTonalButtoncreateNewAccount.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
         }
+        binding.materialSwich.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                context?.let {
+                    FancyToast.makeText(
+                        it,
+                        "Remember me",
+                        FancyToast.LENGTH_SHORT,
+                        FancyToast.INFO,
+                        false
+                    ).show()
+                }
+            } else {
+                context?.let {
+                    FancyToast.makeText(
+                        it,
+                        "Switch is deactivated",
+                        FancyToast.LENGTH_SHORT,
+                        FancyToast.INFO,
+                        false
+                    ).show()
+                }
+            }
+        }
     }
 
     private fun loginUser() {
@@ -41,7 +64,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             context?.let {
                 FancyToast.makeText(
                     it,
-                    "Please fill all the fields",
+                    "Not Remember me",
                     FancyToast.LENGTH_SHORT,
                     FancyToast.WARNING,
                     false
