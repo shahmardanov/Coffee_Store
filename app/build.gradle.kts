@@ -80,7 +80,6 @@ dependencies {
 
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
 
-    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

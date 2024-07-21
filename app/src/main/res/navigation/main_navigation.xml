@@ -45,5 +45,14 @@
         android:id="@+id/coffeeSplashFragment"
         android:name="com.example.test.splash.CoffeeSplashFragment"
         android:label="fragment_coffee_splash"
-        tools:layout="@layout/fragment_coffee_splash" />
+        tools:layout="@layout/fragment_coffee_splash" >
+        <action
+            android:id="@+id/action_coffeeSplashFragment_to_coffeeLoadFragment"
+            app:destination="@id/coffeeLoadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coffeeLoadFragment"
+        android:name="com.example.test.splash.CoffeeLoadFragment"
+        android:label="fragment_coffee_load"
+        tools:layout="@layout/fragment_coffee_load" />
 </navigation>
