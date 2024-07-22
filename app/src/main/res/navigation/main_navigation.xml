@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/onBoardingFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -58,4 +58,9 @@
         android:name="com.example.test.splash.CoffeeLoadFragment"
         android:label="fragment_coffee_load"
         tools:layout="@layout/fragment_coffee_load" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.example.test.onBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>
