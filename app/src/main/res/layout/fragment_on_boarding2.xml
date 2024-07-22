@@ -6,69 +6,58 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="@color/main_background"
-    tools:context=".onBoarding.OnBoardingFragment">
+    tools:context=".onBoarding.OnBoarding2Fragment">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="110dp"
-        android:src="@drawable/onboardingimages2"
+        android:src="@drawable/onboardingimages1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewskip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="24dp"
-        android:text="Skip"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="287dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="70dp"
+        android:id="@+id/textView12"
+        android:layout_width="292dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="54dp"
-        android:text="Choose and customize your drinks with simplicity"
+        android:layout_marginEnd="60dp"
+        android:text="No time to waste when you need your coffee"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="264dp"
-        android:layout_height="93dp"
-        android:layout_marginStart="70dp"
+        android:id="@+id/textView15"
+        android:layout_width="250dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="77dp"
-        android:text="You want your drink and you want it your way so be bold and customize the way that makes you the happiest!"
+        android:layout_marginEnd="102dp"
+        android:text="We’ve crafted a quick and easy way for you to order your favorite coffee or treats thats fast!"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:layout_marginBottom="68dp"
-        android:src="@drawable/coffeebean"
+        android:src="@drawable/coffeebean1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
     <Button
@@ -81,7 +70,7 @@
         android:text="Next"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintTop_toTopOf="@+id/imageView12" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,23 +9,23 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.base.BaseFragment
-import com.example.test.databinding.FragmentOnBoardingBinding
+import com.example.test.databinding.FragmentOnBoarding2Binding
 import kotlinx.coroutines.launch
 
 
-class OnBoardingFragment :
-    BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoardingBinding::inflate) {
+class OnBoarding2Fragment :
+    BaseFragment<FragmentOnBoarding2Binding>(FragmentOnBoarding2Binding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ButtonNext.setOnClickListener {
-            navigateToOnBoarding2()
+            navigateToOnBoarding3()
         }
     }
 
-    private fun navigateToOnBoarding2() {
+    private fun navigateToOnBoarding3() {
         lifecycleScope.launch {
-            findNavController().navigate(OnBoardingFragmentDirections.actionOnBoardingFragmentToOnBoarding2Fragment())
+            findNavController().navigate(OnBoarding2FragmentDirections.actionOnBoarding2FragmentToOnBoard3Fragment())
         }
     }
 }

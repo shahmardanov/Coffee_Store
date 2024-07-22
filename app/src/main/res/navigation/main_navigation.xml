@@ -57,10 +57,41 @@
         android:id="@+id/coffeeLoadFragment"
         android:name="com.example.test.splash.CoffeeLoadFragment"
         android:label="fragment_coffee_load"
-        tools:layout="@layout/fragment_coffee_load" />
+        tools:layout="@layout/fragment_coffee_load" >
+        <action
+            android:id="@+id/action_coffeeLoadFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_coffeeLoadFragment_to_onBoardingFragment2"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_coffeeLoadFragment_to_onBoardingFragment3"
+            app:destination="@id/onBoardingFragment" />
+        <action
+            android:id="@+id/action_coffeeLoadFragment_to_onBoardingFragment4"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.example.test.onBoarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_onBoarding2Fragment"
+            app:destination="@id/onBoarding2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoarding2Fragment"
+        android:name="com.example.test.onBoarding.OnBoarding2Fragment"
+        android:label="fragment_on_boarding2"
+        tools:layout="@layout/fragment_on_boarding2" >
+        <action
+            android:id="@+id/action_onBoarding2Fragment_to_onBoard3Fragment"
+            app:destination="@id/onBoard3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoard3Fragment"
+        android:name="com.example.test.onBoarding.OnBoard3Fragment"
+        android:label="fragment_on_board3"
+        tools:layout="@layout/fragment_on_board3" />
 </navigation>
