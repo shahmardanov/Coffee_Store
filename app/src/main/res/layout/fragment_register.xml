@@ -52,10 +52,10 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="352dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="sans-serif"
             android:text="We are so excited you’re ready to become a part of our coffee network! Don’t forget to check out your perks!"
             app:layout_constraintStart_toStartOf="parent"
@@ -174,8 +174,9 @@
 
 
         <Button
-            android:id="@+id/ButtonRegister"
+
             style="@style/Widget.Material3.Button.TonalButton"
+            android:id="@+id/ButtonRegisterUser"
             android:layout_width="310dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
@@ -209,7 +210,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ButtonRegister" />
+            app:layout_constraintTop_toBottomOf="@+id/ButtonRegisterUser" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"

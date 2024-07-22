@@ -79,7 +79,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             context?.let {
                 FancyToast.makeText(
                     it,
-                    "Not Remember me",
+                    "The fields cannot be empty",
                     FancyToast.LENGTH_SHORT,
                     FancyToast.WARNING,
                     false
@@ -92,15 +92,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         modelView.isSuccess.observe(viewLifecycleOwner) {
             if (it) {
                 if (binding.materialSwich.isChecked) setUserAuth()
-                context?.let { it1 ->
-                    FancyToast.makeText(
-                        it1,
-                        "Login Successful",
-                        FancyToast.LENGTH_SHORT,
-                        FancyToast.SUCCESS,
-                        false
-                    ).show()
-                }
+//                context?.let { it1 ->
+//                    FancyToast.makeText(
+//                        it1,
+//                        "Login Successful",
+//                        FancyToast.LENGTH_SHORT,
+//                        FancyToast.SUCCESS,
+//                        false
+//                    ).show()
+//                }
             } else {
                 context?.let { it2 ->
                     FancyToast.makeText(

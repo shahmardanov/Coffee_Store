@@ -28,7 +28,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
-        binding.ButtonRegister.setOnClickListener {
+        binding.ButtonRegisterUser.setOnClickListener {
             registerUser()
         }
         binding.filledTonalButtonSignin.setOnClickListener {
@@ -41,7 +41,25 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         val password = binding.password.text.toString().trim()
 
         if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            viewModel.registerUser(email, password)
+            if (password.length >= 5 && password.first().isUpperCase()) {
+                viewModel.registerUser(email, password)
+            } else {
+                FancyToast.makeText(
+                    requireContext(),
+                    "Invalid Password. Password should be at least 5 characters long and start with an uppercase letter.",
+                    FancyToast.LENGTH_SHORT,
+                    FancyToast.ERROR,
+                    false
+                ).show()
+            }
+        } else {
+            FancyToast.makeText(
+                requireContext(),
+                "Invalid Email",
+                FancyToast.LENGTH_SHORT,
+                FancyToast.ERROR,
+                false
+            ).show()
         }
     }
 
