@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/onBoardingFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -94,4 +94,9 @@
         android:name="com.example.test.onBoarding.OnBoard3Fragment"
         android:label="fragment_on_board3"
         tools:layout="@layout/fragment_on_board3" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.test.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

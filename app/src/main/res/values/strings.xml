@@ -2,4 +2,11 @@
     <string name="app_name">test</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="titleHome">Home</string>
+    <string name="titleShare">Share</string>
+    <string name="titleComplaintsAndOffers">Complaints And Offers</string>
+    <string name="titleLogin">Login</string>
+    <string name="titleLogout">Logout</string>
+    <string name="titleOutCafes">Our Cafes</string>
 </resources>
