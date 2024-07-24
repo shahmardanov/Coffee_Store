@@ -108,7 +108,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         false
                     ).show()
                 }
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeMainFragment())
             } else {
                 context?.let { it2 ->
                     FancyToast.makeText(

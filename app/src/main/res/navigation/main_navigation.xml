@@ -43,6 +43,10 @@
             app:destination="@id/faceIdFragment"
             app:enterAnim="@android:anim/fade_out" />
         <action
+            android:id="@+id/action_loginFragment_to_homeMainFragment"
+            app:destination="@id/homeMainFragment"
+            app:enterAnim="@android:anim/fade_out" />
+        <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@android:anim/fade_out" />
@@ -130,4 +134,9 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@android:anim/fade_out" />
     </fragment>
+    <fragment
+        android:id="@+id/homeMainFragment"
+        android:name="com.example.test.homemain.HomeMainFragment"
+        android:label="fragment_home_main"
+        tools:layout="@layout/fragment_home_main" />
 </navigation>
