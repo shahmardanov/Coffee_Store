@@ -1,5 +1,7 @@
 package com.example.test.di
 
+import com.example.test.auth.register.remote.ApiService
+import com.example.test.util.Constant.BASE_URL
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -8,11 +10,13 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
 
     @Provides
@@ -31,5 +35,18 @@ object NetworkModule {
     @Singleton
     fun provideFireStore():FirebaseFirestore{
      return FirebaseFirestore.getInstance()
+    }
+
+    @Singleton
+    @Provides
+    fun provideAPIServices(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create()).build()
     }
 }
