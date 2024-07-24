@@ -27,6 +27,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.textViewskip.setOnClickListener {
+            findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToHomeFragment())
+        }
         observeData()
         binding.ButtonRegisterUser.setOnClickListener {
             registerUser()

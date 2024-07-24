@@ -25,6 +25,10 @@ class FaceIdFragment : BaseFragment<FragmentFaceIdBinding>(FragmentFaceIdBinding
             findNavController().navigate(FaceIdFragmentDirections.actionFaceIdFragmentToCoffeeSplashFragment())
         }
         faceIdVerification()
+
+        binding.ButtonNo.setOnClickListener {
+            findNavController().navigate(FaceIdFragmentDirections.actionFaceIdFragmentToHomeFragment())
+        }
     }
 
     private fun faceIdVerification() {

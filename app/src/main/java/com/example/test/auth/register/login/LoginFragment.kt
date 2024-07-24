@@ -13,6 +13,7 @@ import com.example.test.auth.register.RegisterModelView
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentLoginBinding
 import com.example.test.gone
+import com.example.test.home.HomeFragmentDirections
 import com.example.test.visible
 import com.shashank.sony.fancytoastlib.FancyToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeData()
+
+        binding.textViewskip.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+        }
         context?.let {
             FancyToast.makeText(
                 it,
@@ -33,12 +40,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 false
             ).show()
         }
-        super.onViewCreated(view, savedInstanceState)
-        observeData()
         binding.imageViewfaceId.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFaceIdFragment())
         }
-        binding.ButtonLogin.setOnClickListener {
+        binding.ButtonLogintoHome.setOnClickListener {
             loginUser()
         }
         binding.filledTonalButtoncreateNewAccount.setOnClickListener {
@@ -67,6 +72,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
             }
         }
+
+        loginUser()
     }
 
     private fun loginUser() {
@@ -92,15 +99,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         modelView.isSuccess.observe(viewLifecycleOwner) {
             if (it) {
                 if (binding.materialSwich.isChecked) setUserAuth()
-//                context?.let { it1 ->
-//                    FancyToast.makeText(
-//                        it1,
-//                        "Login Successful",
-//                        FancyToast.LENGTH_SHORT,
-//                        FancyToast.SUCCESS,
-//                        false
-//                    ).show()
-//                }
+                context?.let { it1 ->
+                    FancyToast.makeText(
+                        it1,
+                        "Login Successful",
+                        FancyToast.LENGTH_SHORT,
+                        FancyToast.SUCCESS,
+                        false
+                    ).show()
+                }
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
             } else {
                 context?.let { it2 ->
                     FancyToast.makeText(

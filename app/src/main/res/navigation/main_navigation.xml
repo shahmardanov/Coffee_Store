@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -21,7 +22,12 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -30,10 +36,16 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_faceIdFragment"
-            app:destination="@id/faceIdFragment" />
+            app:destination="@id/faceIdFragment"
+            app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/faceIdFragment"
@@ -42,7 +54,12 @@
         tools:layout="@layout/fragment_face_id" >
         <action
             android:id="@+id/action_faceIdFragment_to_coffeeSplashFragment"
-            app:destination="@id/coffeeSplashFragment" />
+            app:destination="@id/coffeeSplashFragment"
+            app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_faceIdFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/coffeeSplashFragment"
@@ -51,7 +68,8 @@
         tools:layout="@layout/fragment_coffee_splash" >
         <action
             android:id="@+id/action_coffeeSplashFragment_to_coffeeLoadFragment"
-            app:destination="@id/coffeeLoadFragment" />
+            app:destination="@id/coffeeLoadFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/coffeeLoadFragment"
@@ -69,7 +87,8 @@
             app:destination="@id/onBoardingFragment" />
         <action
             android:id="@+id/action_coffeeLoadFragment_to_onBoardingFragment4"
-            app:destination="@id/onBoardingFragment" />
+            app:destination="@id/onBoardingFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
@@ -78,7 +97,8 @@
         tools:layout="@layout/fragment_on_boarding" >
         <action
             android:id="@+id/action_onBoardingFragment_to_onBoarding2Fragment"
-            app:destination="@id/onBoarding2Fragment" />
+            app:destination="@id/onBoarding2Fragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/onBoarding2Fragment"
@@ -87,16 +107,27 @@
         tools:layout="@layout/fragment_on_boarding2" >
         <action
             android:id="@+id/action_onBoarding2Fragment_to_onBoard3Fragment"
-            app:destination="@id/onBoard3Fragment" />
+            app:destination="@id/onBoard3Fragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/onBoard3Fragment"
         android:name="com.example.test.onBoarding.OnBoard3Fragment"
         android:label="fragment_on_board3"
-        tools:layout="@layout/fragment_on_board3" />
+        tools:layout="@layout/fragment_on_board3" >
+        <action
+            android:id="@+id/action_onBoard3Fragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.test.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_out" />
+    </fragment>
 </navigation>
