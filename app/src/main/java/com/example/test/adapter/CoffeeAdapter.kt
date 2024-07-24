@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.databinding.CoffeeItemBinding
+import com.example.test.model.CoffeeResponse
+import com.example.test.model.CoffeeResponseItem
 
 class CoffeeAdapter : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
 
 
-
+    private val coffeeList = arrayListOf<CoffeeResponseItem>()
 
     inner class CoffeeViewHolder(val itemCoffeeBinding: CoffeeItemBinding) :
         RecyclerView.ViewHolder(itemCoffeeBinding.root)
@@ -19,12 +21,19 @@ class CoffeeAdapter : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return coffeeList.size
     }
 
     override fun onBindViewHolder(holder: CoffeeViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val coffeeItem = coffeeList[position]
+        holder.itemCoffeeBinding.item = coffeeItem
+
     }
 
+    fun updateList(newList: List<CoffeeResponseItem>) {
+        coffeeList.clear()
+        coffeeList.addAll(newList)
+        notifyDataSetChanged()
+    }
 
 }

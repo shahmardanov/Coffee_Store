@@ -21,9 +21,9 @@ class AuthRepository @Inject constructor(
     suspend fun loginUser(email: String, password: String) =
         firebaseAuth.signInWithEmailAndPassword(email, password).await()
 
-    suspend fun getAllCoffees() = safeApiRequest {
-        service.getAllCoffees()
-    }
+    suspend fun getAllCoffees() = service.getAllCoffees()
+
+
 
     fun switchFaceId(enabled: Boolean) {
     }
