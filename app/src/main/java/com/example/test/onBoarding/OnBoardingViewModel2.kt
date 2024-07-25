@@ -1,6 +1,9 @@
 package com.example.test.onBoarding
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OnBoardingViewModel2 :ViewModel() {
+@HiltViewModel
+class OnBoardingViewModel2 @Inject constructor() : ViewModel() {
 }

@@ -1,6 +1,6 @@
 package com.example.test.repository
 
-import com.example.test.auth.register.remote.ApiService
+import com.example.test.remote.ApiService
 import com.example.test.remote.NetworkResponse
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers

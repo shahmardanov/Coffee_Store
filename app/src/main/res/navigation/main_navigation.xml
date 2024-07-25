@@ -133,12 +133,21 @@
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_coffeeFragment"
+            app:destination="@id/coffeeFragment"
+            app:enterAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeMainFragment"
         android:name="com.example.test.homemain.HomeMainFragment"
         android:label="fragment_home_main"
-        tools:layout="@layout/fragment_home_main" />
+        tools:layout="@layout/fragment_home_main" >
+        <action
+            android:id="@+id/action_homeMainFragment_to_coffeeFragment"
+            app:destination="@id/coffeeFragment"
+            app:enterAnim="@android:anim/fade_out" />
+    </fragment>
     <fragment
         android:id="@+id/coffeeFragment"
         android:name="com.example.test.ui.CoffeeFragment"

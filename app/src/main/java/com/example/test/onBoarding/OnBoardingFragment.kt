@@ -10,9 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentOnBoardingBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class OnBoardingFragment :
     BaseFragment<FragmentOnBoardingBinding>(FragmentOnBoardingBinding::inflate) {
 

@@ -10,8 +10,9 @@ import com.example.test.R
 import com.example.test.adapter.CoffeeAdapter
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentCoffeeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CoffeeFragment : BaseFragment<FragmentCoffeeBinding>(FragmentCoffeeBinding::inflate) {
 
     private val coffeeViewModel by viewModels<CoffeeViewModel>()
@@ -20,13 +21,15 @@ class CoffeeFragment : BaseFragment<FragmentCoffeeBinding>(FragmentCoffeeBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        coffeeViewModel.getAllCoffee()
+        binding.rvCoffee.adapter = coffeeAdapter
+        observeData()
+
     }
 
     private fun observeData() {
-        coffeeViewModel.coffeeList.observe(viewLifecycleOwner) {
+        coffeeViewModel.data.observe(viewLifecycleOwner){
             coffeeAdapter.updateList(it)
-
         }
     }
-
 }

@@ -1,6 +1,9 @@
 package com.example.test.homemain
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeMainViewModel:ViewModel() {
+@HiltViewModel
+class HomeMainViewModel @Inject constructor() : ViewModel() {
 }

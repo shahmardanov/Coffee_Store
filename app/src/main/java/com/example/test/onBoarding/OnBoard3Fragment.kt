@@ -9,8 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentOnBoard3Binding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class OnBoard3Fragment : BaseFragment<FragmentOnBoard3Binding>(FragmentOnBoard3Binding::inflate) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

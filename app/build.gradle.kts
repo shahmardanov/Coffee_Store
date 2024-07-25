@@ -80,6 +80,9 @@ dependencies {
 
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
 
+    implementation ("com.squareup.okhttp3:okhttp:5.0.0-alpha.3")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -1,4 +1,4 @@
-package com.example.test.auth.register.remote
+package com.example.test.remote
 
 import com.example.test.model.CoffeeResponse
 import com.example.test.model.CoffeeResponseItem
@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET
-    suspend fun getAllCoffees(): Response<List<CoffeeResponse>>
+    @GET("api")
+    suspend fun getAllCoffees(): Response<List<CoffeeResponseItem>>
 }
