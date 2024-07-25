@@ -10,6 +10,8 @@ import com.example.test.R
 import com.example.test.adapter.CoffeeAdapter
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentCoffeeBinding
+import com.example.test.gone
+import com.example.test.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,9 @@ class CoffeeFragment : BaseFragment<FragmentCoffeeBinding>(FragmentCoffeeBinding
     private fun observeData() {
         coffeeViewModel.data.observe(viewLifecycleOwner){
             coffeeAdapter.updateList(it)
+        }
+        coffeeViewModel.loading.observe(viewLifecycleOwner){
+            if (it) binding.animationViewCoffee.visible() else binding.animationViewCoffee.gone()
         }
     }
 }

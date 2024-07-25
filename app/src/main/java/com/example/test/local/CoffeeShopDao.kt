@@ -1,37 +1,29 @@
 package com.example.test.local
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.TypeConverter
 import androidx.room.Update
 import com.example.test.model.CoffeeResponseItem
-import com.example.test.model.ProductEntity
+import java.util.Arrays
+
 
 @Dao
 interface CoffeeShopDao {
 
-    @Insert
-    suspend fun addProduct(vararg product: ProductEntity): List<Long>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addProducts(products: CoffeeResponseItem)
 
-    @Query("select * from product_table")
-    suspend fun getAllProducts(): List<ProductEntity>
+    @Query("SELECT * FROM coffee_table")
+    suspend fun getAllProducts(): List<CoffeeResponseItem>
 
-    @Query("select *from product_table where id = :id")
-    suspend fun getProductById(id: Long): ProductEntity?
-
-    @Delete
-    suspend fun deleteProduct(product: ProductEntity)
-
-    @Insert
-    suspend fun insertBasket(coffeeItem: CoffeeResponseItem)
-
-    @Query("Select * from basket_table")
-    suspend fun readAllBasket():List<CoffeeResponseItem>
+    @Query("DELETE FROM coffee_table")
+    suspend fun deleteBasket()
 
     @Update
-    suspend fun updateBasket(productResponseModel: CoffeeResponseItem)
+    suspend fun updateBasket(coffeeResponseItem: CoffeeResponseItem)
 
-    @Query("DELETE FROM basket_table")
-    suspend fun deleteBasket()
+
 }
