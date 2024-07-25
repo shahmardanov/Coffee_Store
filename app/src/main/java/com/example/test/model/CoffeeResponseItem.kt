@@ -1,5 +1,12 @@
 package com.example.test.model
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
+
+@Entity(tableName = "basket_table")
+@Parcelize
 data class CoffeeResponseItem(
     val _id: String,
     val description: String,
@@ -12,4 +19,9 @@ data class CoffeeResponseItem(
     val region: String,
     val roast_level: Int,
     val weight: Int
-)
+) : Parcelable {
+    @PrimaryKey(autoGenerate = true)
+
+    var dbId: Int = 0
+    var count: Int = 0
+}

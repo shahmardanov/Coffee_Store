@@ -4,6 +4,8 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
+import com.example.test.model.CoffeeResponseItem
 import com.example.test.model.ProductEntity
 
 @Dao
@@ -20,4 +22,16 @@ interface CoffeeShopDao {
 
     @Delete
     suspend fun deleteProduct(product: ProductEntity)
+
+    @Insert
+    suspend fun insertBasket(coffeeItem: CoffeeResponseItem)
+
+    @Query("Select * from basket_table")
+    suspend fun readAllBasket():List<CoffeeResponseItem>
+
+    @Update
+    suspend fun updateBasket(productResponseModel: CoffeeResponseItem)
+
+    @Query("DELETE FROM basket_table")
+    suspend fun deleteBasket()
 }
