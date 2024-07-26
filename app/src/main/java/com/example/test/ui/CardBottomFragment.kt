@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.example.test.R
 import com.example.test.databinding.FragmentCardBottomBinding
 import com.example.test.detail.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,7 @@ class CardBottomFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, android.R.style.Theme_Material_Dialog)
+        setStyle(STYLE_NORMAL, R.style.CustomDialogStyle)
     }
 
     override fun onCreateView(

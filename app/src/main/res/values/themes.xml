@@ -9,7 +9,7 @@
 
 
 
-    <style name="DialogStyle" parent="Base.Theme.AppCompat.Dialog">
+    <style name="CustomDialogStyle" parent="Base.Theme.AppCompat.Dialog">
         <item name="android:windowMinWidthMajor">95%</item>
         <item name="android:windowMinWidthMinor">95%</item>
 
