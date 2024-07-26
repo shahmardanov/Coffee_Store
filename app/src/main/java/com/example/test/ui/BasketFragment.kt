@@ -1,60 +1,101 @@
 package com.example.test.ui
 
+import CardBottomFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.R
+import com.example.test.adapter.BasketAdapter
+import com.example.test.base.BaseFragment
+import com.example.test.databinding.FragmentBasketBinding
+import com.example.test.databinding.FragmentCardBottomBinding
+import com.example.test.detail.DetailViewModel
+import com.example.test.gone
+import com.example.test.model.CoffeeResponseItem
+import com.example.test.visible
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BasketFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class BasketFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+@AndroidEntryPoint
+class BasketFragment : BaseFragment<FragmentBasketBinding>(FragmentBasketBinding::inflate) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+    private val basketAdapter: BasketAdapter = BasketAdapter()
+//    private val viewModel: DetailViewModel by viewModels<DetailViewModel>()
+    private var list = arrayListOf<CoffeeResponseItem>()
+
+    fun createFinished() {
+        setRecycler()
+//        viewModel.getBasket()
+        binding.button.setOnClickListener {
+            val dialog = BottomSheetDialogFragment()
+            dialog.show(requireActivity().supportFragmentManager, "AddAppForTestFragment")
+            if (list.isNotEmpty()) {
+
+//                findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToCardBottomFragment3())
+            } else {
+                Toast.makeText(context, "Sepetiniz Boş", Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.buttonBasketNavigation.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_basket, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setRecycler()
+//        viewModel.getBasket()
+        binding.button.setOnClickListener {
+            val dialog = CardBottomFragment()
+            dialog.show(requireActivity().supportFragmentManager, "AddAppForTestFragment")
+        }
+
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BasketFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BasketFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    fun observeEvents() {
+//        with(viewModel) {
+//            with(binding) {
+//                basketList.observe(viewLifecycleOwner) {
+//                    it?.let { it1 -> list.addAll(it1) }
+//                    basketAdapter.updateList(list)
+//                }
+//
+//                totalPriceBasket.observe(viewLifecycleOwner){
+//                    it?.let {
+//                        textViewtotalPrice.text="$it $"
+//                    }
+//                }
+//
+//                loading.observe(viewLifecycleOwner){
+//                    if (it){
+//                        animationView.visible()
+//                        rvBasket.visibility=View.INVISIBLE
+//                    }else{
+//                        animationView.gone()
+//                        rvBasket.visibility=View.VISIBLE
+//                    }
+//                }
+//            }
+//
+//        }
+    }
+
+    private fun setRecycler() {
+        with(binding.rvBasket) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = basketAdapter
+            setHasFixedSize(true)
+        }
     }
 }

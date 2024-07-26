@@ -12,6 +12,6 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
-fun ImageView.loaImageUrl(url: String) {
+fun ImageView.loadImageUrl(url: String?) {
     Glide.with(this).load(url).into(this)
 }

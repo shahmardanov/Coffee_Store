@@ -68,6 +68,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun observeData() {
         viewModel.isSuccess.observe(viewLifecycleOwner) {
+
+
+
+
             if (it) {
                 context?.let { it1 ->
                     FancyToast.makeText(

@@ -21,7 +21,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         binding.imageViewcoffee.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCoffeeFragment())
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCoffeeFragment(
+
+            ))
         }
     }
 

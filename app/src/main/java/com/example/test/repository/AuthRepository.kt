@@ -1,9 +1,11 @@
 package com.example.test.repository
 
+import com.example.test.model.CoffeeResponseItem
 import com.example.test.remote.ApiService
 import com.example.test.remote.NetworkResponse
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
@@ -22,6 +24,10 @@ class AuthRepository @Inject constructor(
         firebaseAuth.signInWithEmailAndPassword(email, password).await()
 
     suspend fun getAllCoffees() = service.getAllCoffees()
+
+    suspend fun getCoffeeById(id: String): Flow<NetworkResponse<List<CoffeeResponseItem>?>> {
+        return safeApiRequest { service.getCoffeeById(id) }
+    }
 
 
 

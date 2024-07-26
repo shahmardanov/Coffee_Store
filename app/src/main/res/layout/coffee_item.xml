@@ -16,6 +16,8 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/background2">
 
+
+
         <ImageView
             android:id="@+id/imageViewtitle"
             load_image_url="@{item.image_url}"
