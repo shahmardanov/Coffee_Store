@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.test.R
+import com.example.test.adapter.CoffeeAdapter
 import com.example.test.base.BaseFragment
 import com.example.test.databinding.FragmentDetailBinding
 import com.example.test.gone
@@ -29,35 +30,30 @@ class DetailFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imageViewBack.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToCoffeeFragment())
+        }
         viewModel.getCoffeeById(args.id)
         setupObservers()
+
+
     }
 
     private fun setupObservers() {
         viewModel.cofeeDetail.observe(viewLifecycleOwner) {
+            binding.product = it
+        }
 
-            when (it) {
-                DetailResponseState.Loading -> {
-                    binding.loadingDetailAnim.visible()
-                }
-                is DetailResponseState.Error -> {
-                    binding.loadingDetailAnim.gone()
-                    FancyToast.makeText(
-                        requireContext(),
-                        it.message.toString(),
-                        FancyToast.LENGTH_LONG,
-                        FancyToast.ERROR,
-                        false
-                    ).show()
-                }
-                is DetailResponseState.Success -> {
-                    binding.loadingDetailAnim.gone()
-                    binding.product = it.result.firstOrNull()
-                    Log.d("detail", "setupObservers: ${it.result}")
-
-
-                }
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.loadingDetailAnim.visible()
+            } else {
+                binding.loadingDetailAnim.gone()
             }
+        }
+        viewModel.error.observe(viewLifecycleOwner) {
+            FancyToast.makeText(requireContext(), it, FancyToast.LENGTH_SHORT, FancyToast.ERROR, false)
+                .show()
         }
     }
 }

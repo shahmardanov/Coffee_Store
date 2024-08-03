@@ -8,8 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCoffee"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:paddingHorizontal="20dp"
         android:paddingTop="8dp"
         android:layout_width="0dp"

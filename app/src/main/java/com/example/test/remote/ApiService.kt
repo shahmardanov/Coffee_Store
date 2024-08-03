@@ -12,5 +12,5 @@ interface ApiService {
     suspend fun getAllCoffees(): Response<List<CoffeeResponseItem>>
 
     @GET("api/{id}")
-    suspend fun getCoffeeById(@Path("id") id: String): Response<List<CoffeeResponseItem>>
+    suspend fun getCoffeeById(@Path("id") id: String): Response<List<CoffeeResponseItem>?>
 }

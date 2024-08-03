@@ -16,6 +16,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.imageViewbasket.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToBasketFragment())
+        }
+
         binding.elevatedButtonLogin.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
         }

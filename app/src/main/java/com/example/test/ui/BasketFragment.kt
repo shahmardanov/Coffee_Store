@@ -29,67 +29,27 @@ class BasketFragment : BaseFragment<FragmentBasketBinding>(FragmentBasketBinding
 
 
     private val basketAdapter: BasketAdapter = BasketAdapter()
-//    private val viewModel: DetailViewModel by viewModels<DetailViewModel>()
-    private var list = arrayListOf<CoffeeResponseItem>()
+    private val viewModel: BasketViewModel by viewModels<BasketViewModel>()
 
-    fun createFinished() {
-        setRecycler()
-//        viewModel.getBasket()
-        binding.button.setOnClickListener {
-            val dialog = BottomSheetDialogFragment()
-            dialog.show(requireActivity().supportFragmentManager, "AddAppForTestFragment")
-            if (list.isNotEmpty()) {
-
-//                findNavController().navigate(BasketFragmentDirections.actionBasketFragmentToCardBottomFragment3())
-            } else {
-                Toast.makeText(context, "Sepetiniz Boş", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.buttonBasketNavigation.setOnClickListener {
-            findNavController().popBackStack()
-        }
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
-//        viewModel.getBasket()
+        viewModel.getBasketProducts()
+        observeData()
         binding.button.setOnClickListener {
             val dialog = CardBottomFragment()
             dialog.show(requireActivity().supportFragmentManager, "AddAppForTestFragment")
         }
-
-
     }
 
-    fun observeEvents() {
-//        with(viewModel) {
-//            with(binding) {
-//                basketList.observe(viewLifecycleOwner) {
-//                    it?.let { it1 -> list.addAll(it1) }
-//                    basketAdapter.updateList(list)
-//                }
-//
-//                totalPriceBasket.observe(viewLifecycleOwner){
-//                    it?.let {
-//                        textViewtotalPrice.text="$it $"
-//                    }
-//                }
-//
-//                loading.observe(viewLifecycleOwner){
-//                    if (it){
-//                        animationView.visible()
-//                        rvBasket.visibility=View.INVISIBLE
-//                    }else{
-//                        animationView.gone()
-//                        rvBasket.visibility=View.VISIBLE
-//                    }
-//                }
-//            }
-//
-//        }
+    private fun observeData() {
+        viewModel.favList.observe(viewLifecycleOwner){
+            basketAdapter.updateList(it)
+        }
     }
+
 
     private fun setRecycler() {
         with(binding.rvBasket) {

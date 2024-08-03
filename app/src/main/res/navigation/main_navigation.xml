@@ -137,6 +137,9 @@
             android:id="@+id/action_homeFragment_to_coffeeFragment"
             app:destination="@id/coffeeFragment"
             app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeMainFragment"
@@ -147,6 +150,9 @@
             android:id="@+id/action_homeMainFragment_to_coffeeFragment"
             app:destination="@id/coffeeFragment"
             app:enterAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_homeMainFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
     </fragment>
     <fragment
         android:id="@+id/coffeeFragment"

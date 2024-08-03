@@ -1,5 +1,7 @@
 package com.example.test.repository
 
+import android.util.Log
+import com.example.test.local.CoffeeShopDao
 import com.example.test.model.CoffeeResponseItem
 import com.example.test.remote.ApiService
 import com.example.test.remote.NetworkResponse
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 class AuthRepository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val service: ApiService
+    private val service: ApiService,
+    private val coffeeShopDao: CoffeeShopDao
 ) {
 
     suspend fun registerUser(email: String, password: String) =
@@ -23,13 +26,37 @@ class AuthRepository @Inject constructor(
     suspend fun loginUser(email: String, password: String) =
         firebaseAuth.signInWithEmailAndPassword(email, password).await()
 
-    suspend fun getAllCoffees() = service.getAllCoffees()
 
     suspend fun getCoffeeById(id: String): Flow<NetworkResponse<List<CoffeeResponseItem>?>> {
         return safeApiRequest { service.getCoffeeById(id) }
     }
 
+    fun addProductsLocal() = flow {
+        try {
+            val response = coffeeShopDao.getAllProducts()
+            emit(response)
+        } catch (e: Exception) {
+            Log.e("basket", "addProductsLocal: ${e.message}")
+        }
+    }.flowOn(Dispatchers.IO)
 
+
+    fun getAllProductsLocal() = flow {
+        try {
+            val response = coffeeShopDao.getAllProducts()
+            emit(response)
+        } catch (e: Exception) {
+            Log.e("error", e.localizedMessage.toString())
+        }
+    }.flowOn(Dispatchers.IO)
+
+    suspend fun getAllCoffees(): Flow<NetworkResponse<List<CoffeeResponseItem>?>> {
+        return safeApiRequest { service.getAllCoffees() }
+    }
+
+
+    fun addProductsLocal(productResponse: CoffeeResponseItem) =
+        coffeeShopDao.addProducts(productResponse)
 
     fun switchFaceId(enabled: Boolean) {
     }

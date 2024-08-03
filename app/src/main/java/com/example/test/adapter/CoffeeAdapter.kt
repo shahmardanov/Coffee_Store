@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.databinding.CoffeeItemBinding
 import com.example.test.model.CoffeeResponseItem
 
-class CoffeeAdapter(private val onItemClick: OnItemClick) : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
+class CoffeeAdapter : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
 
-    interface OnItemClick {
-        fun onItemClick(id: String)
-    }
+
+    lateinit var onClickItem: (CoffeeResponseItem) -> Unit
+    lateinit var navigateToDetail: (id: String) -> Unit
 
     private val coffeeList = arrayListOf<CoffeeResponseItem>()
-  //  var onClick: (CoffeeResponseItem) -> Unit = {}
-    // lateinit var NavigateToDetail: (id: Int) -> Unit
 
     inner class CoffeeViewHolder(val itemCoffeeBinding: CoffeeItemBinding) :
         RecyclerView.ViewHolder(itemCoffeeBinding.root)
@@ -31,9 +29,13 @@ class CoffeeAdapter(private val onItemClick: OnItemClick) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: CoffeeViewHolder, position: Int) {
         val coffeeItem = coffeeList[position]
         holder.itemCoffeeBinding.item = coffeeItem
+
+//        holder.itemCoffeeBinding.buttonaddToBasket.setOnClickListener {
+//            onClickItem(coffeeItem)
+//        }
+
         holder.itemCoffeeBinding.root.setOnClickListener {
-            onItemClick.onItemClick(coffeeItem.id)
-           // NavigateToDetail(coffeeItem.id)
+            navigateToDetail(coffeeItem.id)
         }
     }
 
@@ -42,5 +44,4 @@ class CoffeeAdapter(private val onItemClick: OnItemClick) : RecyclerView.Adapter
         coffeeList.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

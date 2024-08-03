@@ -28,8 +28,8 @@ class DetailViewModel @Inject constructor(
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
 
-    private val _error = MutableLiveData<Boolean>()
-    val error: LiveData<Boolean> get() = _error
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
     private val _totalPriceBasket = MutableLiveData<Double?>()
     val totalPriceBasket: LiveData<Double?> get() = _totalPriceBasket
@@ -37,87 +37,67 @@ class DetailViewModel @Inject constructor(
     private val _orderStatus = MutableLiveData<Boolean>()
     val orderStatus: LiveData<Boolean> get() = _orderStatus
 
-    private val _cofeeDetail = MutableLiveData<DetailResponseState>()
-    val cofeeDetail: LiveData<DetailResponseState> get() = _cofeeDetail
-
-
-    fun addToBasket(coffee: CoffeeResponseItem, count: Int) {
-        if (coffee.count == 0) {
-            coffee.count += 1
-            viewModelScope.launch(Dispatchers.IO) {
-                basketCoffee.updateBasket(coffee)
-            }
-        } else {
-            coffee.count += count
-            viewModelScope.launch(Dispatchers.IO) {
-                basketCoffee.updateBasket(coffee)
-            }
-        }
-    }
-
-
+    private val _cofeeDetail = MutableLiveData<CoffeeResponseItem>()
+    val cofeeDetail: LiveData<CoffeeResponseItem> get() = _cofeeDetail
 
 
     fun getCoffeeById(id: String) {
-
+        _loading.value = true
         viewModelScope.launch {
             repository.getCoffeeById(id)
-                .collectLatest {
-                    when (it) {
+                .collectLatest { response ->
+                    when (response) {
                         is NetworkResponse.Success -> {
-                            _cofeeDetail.value =
-                                 DetailResponseState.Success(it.data ?: emptyList())
-//                            _loading.value = false
-//                            _error.value = false
+                            response.data?.let {
+                                _cofeeDetail.value = it[0]
+                            }
                         }
 
                         is NetworkResponse.Error -> {
-                            _cofeeDetail.value =
-                                DetailResponseState.Error(it.message ?: "Unknown error")
-                            Log.d("detail", "getCoffeeById: ${it.message}")
-//
-                        }
-
-                        is NetworkResponse.Loading -> {
-                            _cofeeDetail.value = DetailResponseState.Loading
+                            response.message?.let {
+                                _error.value = it
+                                Log.e("Detail Fragment Image Error", it)
+                            }
                         }
                     }
 
                 }
+            _loading.value = false
         }
 
     }
 
-    fun getBasket() {
-        _loading.value = true
-        var total = 0.0
-        viewModelScope.launch {
-            val request = basketCoffee.getAllProducts()
-            if (request.isNotEmpty()) {
-                _basketList.value = request
-                request.forEach { product ->
-                    product.price?.let {
-                        total += it
-                    }
-                }
-                _totalPriceBasket.value = total
-                _loading.value = false
-                _error.value = false
-            } else {
-                _error.value = true
-                _loading.value = false
-            }
-        }
-    }
 
-    fun clearBasket() {
-        viewModelScope.launch {
-            try {
-                basketCoffee.deleteBasket()
-                _orderStatus.value = true
-            } catch (e: Exception) {
-                _orderStatus.value = false
-            }
-        }
-    }
+//    fun getBasket() {
+//        _loading.value = true
+//        var total = 0.0
+//        viewModelScope.launch {
+//            val request = basketCoffee.getAllProducts()
+//            if (request.isNotEmpty()) {
+//                _basketList.value = request
+//                request.forEach { product ->
+//                    product.price?.let {
+//                        total += it
+//                    }
+//                }
+//                _totalPriceBasket.value = total
+//                _loading.value = false
+//                _error.value = false
+//            } else {
+//                _error.value = true
+//                _loading.value = false
+//            }
+//        }
+//    }
+
+//    fun clearBasket() {
+//        viewModelScope.launch {
+//            try {
+//                basketCoffee.deleteBasket()
+//                _orderStatus.value = true
+//            } catch (e: Exception) {
+//                _orderStatus.value = false
+//            }
+//        }
+//    }
 }

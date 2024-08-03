@@ -11,6 +11,7 @@ import com.example.test.remote.NetworkResponse
 import com.example.test.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -20,7 +21,7 @@ class CoffeeViewModel @Inject constructor(private val repository: AuthRepository
 
 
     private var _data = MutableLiveData<List<CoffeeResponseItem>>()
-    val data: LiveData<List<CoffeeResponseItem>> get() = _data
+    val data: MutableLiveData<List<CoffeeResponseItem>> get() = _data
 
     private var _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> get() = _loading
@@ -28,26 +29,36 @@ class CoffeeViewModel @Inject constructor(private val repository: AuthRepository
 
     fun getAllCoffee() {
         _loading.value = true
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             try {
                 val response = repository.getAllCoffees()
-                if (response.isSuccessful) {
-                    Log.e("data", response.message().toString())
-                    withContext(Dispatchers.Main) {
-                        response.body()?.let {
-                            if (it.isNotEmpty()) {
+                response.collectLatest { coffeeResponse ->
+                    when (coffeeResponse) {
+                        is NetworkResponse.Success -> {
+                            coffeeResponse.data?.let {
                                 _data.value = it
-                                _loading.value = false
                             }
                         }
+
+                        is NetworkResponse.Error -> {
+                            Log.e("error", coffeeResponse.message.toString())
+
+                        }
                     }
+                    _loading.value = false
                 }
             } catch (e: Exception) {
                 if (e.localizedMessage != null) {
                     Log.e("error", e.localizedMessage)
                 }
-
+                _loading.postValue(false)
             }
+        }
+    }
+
+    fun addProduct(productResponse: CoffeeResponseItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addProductsLocal(productResponse)
         }
     }
 }
