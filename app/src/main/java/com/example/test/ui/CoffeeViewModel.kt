@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.test.local.CoffeeShopDao
 import com.example.test.model.CoffeeResponse
 import com.example.test.model.CoffeeResponseItem
 import com.example.test.remote.NetworkResponse
@@ -17,7 +18,10 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class CoffeeViewModel @Inject constructor(private val repository: AuthRepository) : ViewModel() {
+class CoffeeViewModel @Inject constructor(
+    private val repository: AuthRepository,
+    private val db: CoffeeShopDao
+) : ViewModel() {
 
 
     private var _data = MutableLiveData<List<CoffeeResponseItem>>()
@@ -57,8 +61,18 @@ class CoffeeViewModel @Inject constructor(private val repository: AuthRepository
     }
 
     fun addProduct(productResponse: CoffeeResponseItem) {
+
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addProductsLocal(productResponse)
+
+            val data = db.getProductById(productResponse.id)
+            if (data != null) {
+                data.count += 1
+                db.addProducts(data)
+
+            } else {
+                productResponse.count = 1
+                db.addProducts(productResponse)
+            }
         }
     }
 }

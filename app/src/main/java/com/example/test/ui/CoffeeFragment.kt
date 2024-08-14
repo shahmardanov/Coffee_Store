@@ -28,6 +28,10 @@ class CoffeeFragment : BaseFragment<FragmentCoffeeBinding>(FragmentCoffeeBinding
         coffeeViewModel.getAllCoffee()
         binding.rvCoffee.adapter = coffeeAdapter
 
+        coffeeAdapter.onClickItem = {
+            coffeeViewModel.addProduct(it)
+        }
+
         coffeeAdapter.navigateToDetail = {
             findNavController().navigate(
                 CoffeeFragmentDirections.actionCoffeeFragmentToDetailFragment(
@@ -42,7 +46,7 @@ class CoffeeFragment : BaseFragment<FragmentCoffeeBinding>(FragmentCoffeeBinding
     }
 
     private fun observeData() {
-        coffeeViewModel.data.observe(/* owner = */ viewLifecycleOwner) {
+        coffeeViewModel.data.observe(viewLifecycleOwner) {
             Log.e("Coffes", it.toString())
             coffeeAdapter.updateList(it)
         }

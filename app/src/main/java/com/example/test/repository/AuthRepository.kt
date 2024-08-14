@@ -55,7 +55,7 @@ class AuthRepository @Inject constructor(
     }
 
 
-    fun addProductsLocal(productResponse: CoffeeResponseItem) =
+    suspend fun addProductsLocal(productResponse: CoffeeResponseItem) =
         coffeeShopDao.addProducts(productResponse)
 
     fun switchFaceId(enabled: Boolean) {

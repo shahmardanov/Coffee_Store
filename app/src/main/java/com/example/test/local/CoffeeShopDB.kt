@@ -7,7 +7,7 @@ import com.example.test.model.CoffeeResponseItem
 import com.example.test.model.ProductEntity
 import com.example.test.util.Converters
 
-@Database(entities = [CoffeeResponseItem::class], version = 4,exportSchema = false)
+@Database(entities = [CoffeeResponseItem::class], version = 6,exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class CoffeeShopDB :RoomDatabase(){
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.test.R
 import com.example.test.databinding.FragmentCardBottomBinding
 import com.example.test.detail.DetailViewModel
@@ -30,23 +31,14 @@ class CardBottomFragment : DialogFragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentCardBottomBinding.inflate(layoutInflater, container, false)
-
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         observeEvents()
-        binding.bottomButton.setOnClickListener {
-//            viewModel.clearBasket()
-        }
     }
 
     private fun observeEvents() {

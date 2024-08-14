@@ -6,9 +6,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-@Entity(tableName = "coffee_table", primaryKeys = ["id", "id"])
+@Entity(tableName = "coffee_table")
 @Parcelize
 data class CoffeeResponseItem(
+    @PrimaryKey
     val id: String,
     val name: String,
     val flavor_profile: List<String>,

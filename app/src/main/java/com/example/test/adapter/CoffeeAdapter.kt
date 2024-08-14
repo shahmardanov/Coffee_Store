@@ -30,9 +30,9 @@ class CoffeeAdapter : RecyclerView.Adapter<CoffeeAdapter.CoffeeViewHolder>() {
         val coffeeItem = coffeeList[position]
         holder.itemCoffeeBinding.item = coffeeItem
 
-//        holder.itemCoffeeBinding.buttonaddToBasket.setOnClickListener {
-//            onClickItem(coffeeItem)
-//        }
+        holder.itemCoffeeBinding.buttonaddToBasket.setOnClickListener {
+            onClickItem(coffeeItem)
+        }
 
         holder.itemCoffeeBinding.root.setOnClickListener {
             navigateToDetail(coffeeItem.id)

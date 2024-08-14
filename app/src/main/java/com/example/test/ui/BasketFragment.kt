@@ -32,7 +32,6 @@ class BasketFragment : BaseFragment<FragmentBasketBinding>(FragmentBasketBinding
     private val viewModel: BasketViewModel by viewModels<BasketViewModel>()
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecycler()
@@ -45,7 +44,14 @@ class BasketFragment : BaseFragment<FragmentBasketBinding>(FragmentBasketBinding
     }
 
     private fun observeData() {
-        viewModel.favList.observe(viewLifecycleOwner){
+        viewModel.favList.observe(viewLifecycleOwner) {
+            var totalPrice = 0.0
+            it.forEach { coffee ->
+                if (coffee.count > 0) {
+                    totalPrice += (coffee.price * coffee.count)
+                }
+            }
+            binding.textViewtotalPrice.text = totalPrice.toString()
             basketAdapter.updateList(it)
         }
     }

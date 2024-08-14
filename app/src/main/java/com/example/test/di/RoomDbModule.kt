@@ -18,7 +18,8 @@ object RoomDbModule {
     @Provides
     @Singleton
     fun provideRoomDb(@ApplicationContext context: Context): CoffeeShopDB {
-        return Room.databaseBuilder(context, CoffeeShopDB::class.java, "CoffeeShopDB").build()
+        return Room.databaseBuilder(context, CoffeeShopDB::class.java, "CoffeeShopDB")
+            .fallbackToDestructiveMigration().build()
     }
 
     @Provides
