@@ -41,6 +41,9 @@ class DetailFragment :
         binding.buttonaddToBasket.setOnClickListener {
             coffeeViewModel.addProduct(viewModel.cofeeDetail.value!!)
         }
+        binding.imageViewBack.setOnClickListener{
+            findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToCoffeeFragment())
+        }
 
 
     }
